@@ -1,0 +1,45 @@
+// wdLosr - Le Loc
+#include <bits/stdc++.h>
+#define ll long long
+#define pb push_back
+#define fi first
+#define se second
+#define endl "\n"
+#define sz size
+#define all(a) a.begin(), a.end()
+#define MOD 1000000007
+
+using namespace std;
+
+struct SinhVien
+{
+    string mdn, name;
+    int num;
+};
+
+int main()
+{
+    int n;
+    cin >> n;
+    cin.ignore();
+    vector<SinhVien> ds(n);
+
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> ds[i].mdn;
+        cin.ignore();
+        getline(cin, ds[i].name);
+        cin >> ds[i].num;
+    }
+
+    sort(ds.begin(), ds.end(), [](SinhVien &x, SinhVien &y)
+    { 
+        if(x.num == y.num) return x.mdn < y.mdn;
+        return x.num > y.num; 
+    });
+
+    for (auto &x : ds)
+    {
+        cout << x.mdn << ' ' << x.name << ' ' << x.num << endl;
+    }
+}
